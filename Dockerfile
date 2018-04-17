@@ -13,7 +13,8 @@ ENV \
 	TZ=Europe/Berlin 
 
 RUN apk update && \
-    apk add bash curl && \
-    true
+    apk --no-cache add bash curl tzdata && \
+    rm -rf /var/cache/apk/* && \
+    echo "done"
 
-ENTRYPOINT [ "bash" ]    
+ENTRYPOINT [ "/bin/bash" ]
